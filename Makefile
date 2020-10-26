@@ -11,7 +11,11 @@ all:
 	# cargo
 	$(SYMLINK) $(PWD)/.cargo $(HOME)
 	# git
-	$(SYMLINK) $(PWD)/.gitconfig $(HOME)
+ifeq ($(MACHINE),work)
+	$(SYMLINK) $(PWD)/.gitconfig.work $(HOME)/.gitconfig
+else
+	$(SYMLINK) $(PWD)/.gitconfig.personal $(HOME)/.gitconfig
+endif
 
 clean:
 	# xinitrc

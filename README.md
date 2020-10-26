@@ -63,3 +63,6 @@ vim /etc/fstab
 EDITOR=vim visudo
 ```
 
+To install work-specific dotfiles, the `MACHINE=work` environment variable
+should be set before calling `make`.
+
