@@ -72,6 +72,7 @@ sudo pacman --sync --needed --noconfirm discord
 sudo pacman --sync --needed --noconfirm rsync
 
 sudo pacman --sync --needed --noconfirm rustup sccache
+rustup update stable
 
 sudo pacman --sync --needed --noconfirm openssh
 if ! [ -f $HOME/.ssh/id_ed25519 ]; then
