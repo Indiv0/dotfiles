@@ -61,6 +61,8 @@ swapon /swapfile
 # See: https://wiki.archlinux.org/index.php/Power_management/Suspend_and_hibernate#Hibernation_into_swap_file
 vim /etc/fstab
 EDITOR=vim visudo
+systemctl start systemd-timesyncd
+systemctl enable systemd-timesyncd
 ```
 
 To install work-specific dotfiles, the `MACHINE=work` environment variable
