@@ -5,3 +5,5 @@
 .config/dconf
 # discord
 .config/discord
+# pulse
+.config/pulse
