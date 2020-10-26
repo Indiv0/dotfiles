@@ -80,3 +80,5 @@ if ! [ -f $HOME/.ssh/id_ed25519 ]; then
 fi
 
 sudo pacman --sync --needed --noconfirm dmenu
+
+sudo pacman --sync --needed --noconfirm pass
