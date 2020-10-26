@@ -1,5 +1,7 @@
 #!/bin/sh
 
+user=$(id --user --name)
+
 # Install man to be able to view man pages for programs.
 sudo pacman --sync --needed --noconfirm man
 
@@ -51,7 +53,7 @@ sudo pacman --sync --needed --noconfirm firefox
 sudo pacman --sync --needed --noconfirm smartmontools
 
 sudo pacman --sync --needed --noconfirm docker
-sudo gpasswd -a indiv0 docker
+sudo gpasswd -a $user docker
 (cd $HOME/src/aur &&\
     auracle clone libnvidia-container-tools &&\
     cd libnvidia-container &&\
