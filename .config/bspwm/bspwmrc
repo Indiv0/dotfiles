@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Load built-in and custom installed TTF fonts.
+xset fp /usr/share/fonts/TTF,built-ins
+xset fp rehash
+
+# Load our Xresources configuration for
+# things like font size, urxvt keybindings,
+# DPI, etc.
+if [ -f $HOME/.Xresources ]; then
+    xrdb -load $HOME/.Xresources
+fi
+
+# Start sxhkd and urxvtd in the background
+# if they're not already running. We want
+# to perform this check so that if we
+# reload/restart bspwm we don't end up with
+# multiple copies of each of these running.
+pgrep --exact sxhkd > /dev/null || sxhkd &
+pgrep --exact urxvtd > /dev/null || urxvtd --quiet --opendisplay --fork
+
+# Configure bspwm to provide 10 monitors
+# (i.e. workspaces) for us to send windows to.
+bspc monitor -d I II III IV V VI VII VIII IX X

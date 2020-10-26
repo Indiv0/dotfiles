@@ -1,0 +1,7 @@
+# cargo
+.cargo/.package-cache
+.cargo/registry
+# dconf
+.config/dconf
+# discord
+.config/discord

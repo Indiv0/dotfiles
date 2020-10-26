@@ -1,0 +1,18 @@
+! Override the default DPI with a larger value to
+! force  Firefox to display UI elements at a larger
+! scale.
+! Multiples of 96 are recommended for DPI, so I set
+! it to 96 * 225% = 216
+! See: https://wiki.archlinux.org/index.php/HiDPI#X_Resources
+Xft.dpi: 216
+
+URxvt.font: xft:Iosevka:size=20
+
+! Enable changing the font size on the fly
+! using ^-+ and ^-- commands. You can also
+! see the current font size with ^-=.
+! See: https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/
+! See: https://wiki.archlinux.org/index.php/rxvt-unicode#Changing_font_size_on_the_fly
+URxvt.perl-ext-common: resize-font
+URxvt.iso14755: false
+URxvt.iso14755_52: false

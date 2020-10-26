@@ -1,0 +1,5 @@
+[build]
+# Use sccache to cache build artifacts
+# across all projects, saving on compile
+# time.
+rustc-wrapper = "/usr/bin/sccache"
