@@ -1,4 +1,5 @@
 #!/bin/sh
+set -e
 
 user=$(id --user --name)
 
