@@ -8,7 +8,7 @@ sudo pacman --sync --needed --noconfirm man
 # Install rxvt-unicode for a terminal console server & client.
 # Install xorg-xset for setting the X font path. This is necessary for rxvt-unicode to see fonts like ttf-iosevka.
 # Install xorg-xrdb for setting font settings, etc. for rxvt-unicode.
-sudo pacman --sync --needed --noconfirm xorg-server xorg-xinit xorg-xset xorg-xrdb bspwm sxhkd rxvt-unicode
+sudo pacman --sync --needed --noconfirm xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
 
 # Install base-devel to be able to compile & install packages from the AUR.
 sudo pacman --sync --needed --noconfirm base-devel
@@ -36,7 +36,8 @@ fi
     makepkg --syncdeps --install --needed --noconfirm)
 # Generate the fonts.dir so that `xset fp /usr/share/fonts/local` works.
 (cd /usr/share/fonts &&\
-    sudo -s -- "mkfontscale; mkfontdir")
+    sudo mkfontscale &&\
+    sudo mkfontdir)
 
 # Install noto-fonts to provide ttf-font and serve as a fallback for my preferred fonts.
 sudo pacman --sync --needed --noconfirm noto-fonts
