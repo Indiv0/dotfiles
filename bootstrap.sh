@@ -81,7 +81,8 @@ fi
 
 sudo pacman --sync --needed --noconfirm dmenu
 
-sudo pacman --sync --needed --noconfirm pass
+# qt5-base is necessary for pinentry-qt to work
+sudo pacman --sync --needed --noconfirm pass qt5-base
 
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way

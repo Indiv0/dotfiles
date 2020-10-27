@@ -23,6 +23,7 @@ ifeq ($(MACHINE),work)
 else
 	$(SYMLINK) $(PWD)/.gnupg/gpg.conf.personal $(HOME)/.gnupg/gpg.conf
 endif
+	$(SYMLINK) $(PWD)/.gnupg/gpg-agent.conf $(HOME)/.gnupg
 	find $(HOME)/.gnupg -type d -exec chmod 700 {} \;
 	find $(HOME)/.gnupg -type f -exec chmod 600 {} \;
 	# bash
@@ -43,6 +44,7 @@ clean:
 	rm -f $(HOME)/.gitconfig
 	# gnupg
 	rm -f $(HOME)/.gnupg/gpg.conf
+	rm -f $(HOME)/.gnupg/gpg-agent.conf
 	# bash
 	rm -f $(HOME)/.bash_profile
 	rm -f $(HOME)/.profile
