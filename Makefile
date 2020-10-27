@@ -18,6 +18,9 @@ else
 endif
 	# gnupg
 	$(SYMLINK) $(PWD)/.gnupg $(HOME)
+	# bash
+	$(SYMLINK) $(PWD)/.bash_profile $(HOME)
+	$(SYMLINK) $(PWD)/.profile $(HOME)
 
 clean:
 	# xinitrc
@@ -31,3 +34,6 @@ clean:
 	rm -f $(HOME)/.gitconfig
 	# gnupg
 	rm -f $(HOME)/.gnupg
+	# bash
+	rm -f $(HOME)/.bash_profile
+	rm -f $(HOME)/.profile
