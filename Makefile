@@ -16,6 +16,8 @@ ifeq ($(MACHINE),work)
 else
 	$(SYMLINK) $(PWD)/.gitconfig.personal $(HOME)/.gitconfig
 endif
+	# gnupg
+	$(SYMLINK) $(PWD)/.gnupg $(HOME)
 
 clean:
 	# xinitrc
@@ -27,3 +29,5 @@ clean:
 	rm -f $(HOME)/.cargo
 	# git
 	rm -f $(HOME)/.gitconfig
+	# gnupg
+	rm -f $(HOME)/.gnupg
