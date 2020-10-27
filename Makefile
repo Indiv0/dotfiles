@@ -17,8 +17,14 @@ else
 	$(SYMLINK) $(PWD)/.gitconfig.personal $(HOME)/.gitconfig
 endif
 	# gnupg
-	$(SYMLINK) $(PWD)/.gnupg $(HOME)
-	chmod 700 $(HOME)/.gnupg
+	mkdir -p $(HOME)/.gnupg
+ifeq ($(MACHINE),work)
+	$(SYMLINK) $(PWD)/.gnupg/gpg.conf.work $(HOME)/.gnupg/gpg.conf
+else
+	$(SYMLINK) $(PWD)/.gnupg/gpg.conf.personal $(HOME)/.gnupg/gpg.conf
+endif
+	find $(HOME)/.gnupg -type d -exec chmod 700 {} \;
+	find $(HOME)/.gnupg -type f -exec chmod 600 {} \;
 	# bash
 	$(SYMLINK) $(PWD)/.bash_profile $(HOME)
 	$(SYMLINK) $(PWD)/.profile $(HOME)
@@ -34,7 +40,7 @@ clean:
 	# git
 	rm -f $(HOME)/.gitconfig
 	# gnupg
-	rm -f $(HOME)/.gnupg
+	rm -f $(HOME)/.gnupg/gpg.conf
 	# bash
 	rm -f $(HOME)/.bash_profile
 	rm -f $(HOME)/.profile
