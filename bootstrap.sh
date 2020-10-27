@@ -88,3 +88,5 @@ sudo pacman --sync --needed --noconfirm pass
 sudo pacman --sync --needed --noconfirm devtools
 
 sudo pacman --sync --needed --noconfirm aws-cli
+
+sudo pacman --sync --needed --noconfirm borg
