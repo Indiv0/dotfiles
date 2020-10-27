@@ -28,6 +28,8 @@ endif
 	# bash
 	$(SYMLINK) $(PWD)/.bash_profile $(HOME)
 	$(SYMLINK) $(PWD)/.profile $(HOME)
+	# aws-cli
+	$(SYMLINK) $(PWD)/.aws $(HOME)
 
 clean:
 	# xinitrc
@@ -44,3 +46,5 @@ clean:
 	# bash
 	rm -f $(HOME)/.bash_profile
 	rm -f $(HOME)/.profile
+	# aws-cli
+	rm -f $(HOME)/.aws

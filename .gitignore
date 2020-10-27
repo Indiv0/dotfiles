@@ -1,3 +1,5 @@
+# aws-cli
+.aws/credentials
 # cargo
 .cargo/.package-cache
 .cargo/registry
