@@ -86,3 +86,5 @@ sudo pacman --sync --needed --noconfirm pass
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way
 sudo pacman --sync --needed --noconfirm devtools
+
+sudo pacman --sync --needed --noconfirm aws-cli
