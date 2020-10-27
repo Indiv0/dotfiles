@@ -1,3 +1,5 @@
 [user]
-	email = contact@nikitapek.in
+	email = nikita@frecency.com
 	name = Nikita Pekin
+[alias]
+	pushf = push --force-with-lease

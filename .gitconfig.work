@@ -1,3 +1,6 @@
 [user]
 	email = nikita.pekin@kandy.io
 	name = Nikita Pekin
+[alias]
+	pushf = push --force-with-lease
+
