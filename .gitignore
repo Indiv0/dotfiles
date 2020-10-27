@@ -5,5 +5,7 @@
 .config/dconf
 # discord
 .config/discord
+# gnupg
+.gnupg/*
 # pulse
 .config/pulse
