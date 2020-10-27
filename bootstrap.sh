@@ -90,4 +90,4 @@ sudo pacman --sync --needed --noconfirm devtools
 
 sudo pacman --sync --needed --noconfirm aws-cli
 
-sudo pacman --sync --needed --noconfirm borg
+sudo pacman --sync --needed --noconfirm borg lftp
