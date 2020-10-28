@@ -91,3 +91,11 @@ sudo pacman --sync --needed --noconfirm devtools
 sudo pacman --sync --needed --noconfirm aws-cli
 
 sudo pacman --sync --needed --noconfirm borg lftp
+
+# For connecting to Cisco AnyConnect VPN.
+if [ "$MACHINE" == "work" ]; then
+    sudo pacman --sync --needed --noconfirm openconnect
+fi
+
+# for the ping utility
+#sudo pacman --sync --needed --noconfirm iputils
