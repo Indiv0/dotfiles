@@ -31,6 +31,8 @@ endif
 	$(SYMLINK) $(PWD)/.profile $(HOME)
 	# aws-cli
 	$(SYMLINK) $(PWD)/.aws $(HOME)
+	# vim
+	$(SYMLINK) $(PWD)/.vimrc $(HOME)
 
 clean:
 	# xinitrc
@@ -50,3 +52,5 @@ clean:
 	rm -f $(HOME)/.profile
 	# aws-cli
 	rm -f $(HOME)/.aws
+	# vim
+	rm -f $(HOME)/.vimrc
