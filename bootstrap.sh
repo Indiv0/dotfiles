@@ -103,5 +103,5 @@ fi
 # for audio
 pac_install pulseaudio pavucontrol
 
-# YouCompleteMe for code completion in VIM.
-aur_install vim-youcompleteme-git
+# Ale for code completion in VIM.
+pac_install vim-ale

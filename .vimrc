@@ -15,3 +15,11 @@ filetype plugin indent on
 " When opening html, css, and js files use 2 space characters for indent
 " instead of 4
 autocmd BufEnter *.html,*.css,*.js set shiftwidth=2 tabstop=2 softtabstop=2
+
+" Enable rust-analyzer for rust language files via ALE.
+let g:ale_linters = {'rust': ['analyzer']}
+" Enable ALE autocompletion where available.
+" This setting must be set before ALE is loaded.
+let g:ale_completion_enabled = 1
+" Enable ALE automatic imports from external modules.
+let g:ale_completion_autoimport = 1
