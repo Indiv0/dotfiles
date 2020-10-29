@@ -1,20 +1,32 @@
 #!/bin/sh
 set -e
 
+pac_install () {
+    sudo pacman --sync --needed --noconfirm $@
+}
+
+aur_install () {
+    directory=${2:-$1}
+    (cd $HOME/src/aur &&\
+        auracle clone $1 &&\
+        cd $directory &&\
+        makepkg --syncdeps --install --needed --noconfirm)
+}
+
 user=$(id --user --name)
 
 # Install man to be able to view man pages for programs.
-sudo pacman --sync --needed --noconfirm man
+pac_install man
 
 # Install xorg-server and xorg-xinit to be able to run X.
 # Install bspwm and sxhkd for a tiling WM & keybind manager.
 # Install rxvt-unicode for a terminal console server & client.
 # Install xorg-xset for setting the X font path. This is necessary for rxvt-unicode to see fonts like ttf-iosevka.
 # Install xorg-xrdb for setting font settings, etc. for rxvt-unicode.
-sudo pacman --sync --needed --noconfirm xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
+pac_install xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
 
 # Install base-devel to be able to compile & install packages from the AUR.
-sudo pacman --sync --needed --noconfirm base-devel
+pac_install base-devel
 mkdir --parents $HOME/src/aur
 
 # Install auracle-git to manage AUR packages.
@@ -27,84 +39,69 @@ fi
 
 # Install urxvt-resize-font-git for resizing urxvt font size on-the-fly.
 # See: https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/
-(cd $HOME/src/aur &&\
-    auracle clone urxvt-resize-font-git &&\
-    cd urxvt-resize-font-git &&\
-    makepkg --syncdeps --install --needed --noconfirm)
+aur_install urxvt-resize-font-git
 
 # Install the ttf-iosevka font.
-(cd $HOME/src/aur &&\
-    auracle clone ttf-iosevka &&\
-    cd ttf-iosevka &&\
-    makepkg --syncdeps --install --needed --noconfirm)
+aur_install ttf-iosevka
 # Generate the fonts.dir so that `xset fp /usr/share/fonts/local` works.
 (cd /usr/share/fonts &&\
     sudo mkfontscale &&\
     sudo mkfontdir)
 
 # Install noto-fonts to provide ttf-font and serve as a fallback for my preferred fonts.
-sudo pacman --sync --needed --noconfirm noto-fonts
+pac_install noto-fonts
 
 # Install tmux.
-sudo pacman --sync --needed --noconfirm tmux
+pac_install tmux
 
 # Install Firefox.
-sudo pacman --sync --needed --noconfirm firefox
+pac_install firefox
 
-sudo pacman --sync --needed --noconfirm smartmontools
+pac_install smartmontools
 
-sudo pacman --sync --needed --noconfirm docker
+pac_install docker
 sudo gpasswd -a $user docker
-(cd $HOME/src/aur &&\
-    auracle clone libnvidia-container-tools &&\
-    cd libnvidia-container &&\
-    makepkg --syncdeps --install --needed --noconfirm)
-(cd $HOME/src/aur &&\
-    auracle clone nvidia-container-toolkit &&\
-    cd nvidia-container-toolkit &&\
-    makepkg --syncdeps --install --needed --noconfirm)
+aur_install libnvidia-container-tools libnvidia-container
+aur_install nvidia-container-toolkit
 
-sudo pacman --sync --needed --noconfirm mlocate
+pac_install mlocate
 sudo systemctl start updatedb.timer
 
-sudo pacman --sync --needed --noconfirm discord
+pac_install discord
 
-sudo pacman --sync --needed --noconfirm rsync
+pac_install rsync
 
-sudo pacman --sync --needed --noconfirm rustup sccache
+pac_install rustup sccache
 rustup update stable
 
-sudo pacman --sync --needed --noconfirm openssh
+pac_install openssh
 if ! [ -f $HOME/.ssh/id_ed25519 ]; then
     ssh-keygen -t ed25519
 fi
 
-sudo pacman --sync --needed --noconfirm dmenu
+pac_install dmenu
 
 # qt5-base is necessary for pinentry-qt to work
-sudo pacman --sync --needed --noconfirm pass qt5-base
+pac_install pass qt5-base
 
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way
-sudo pacman --sync --needed --noconfirm devtools
+pac_install devtools
 
-sudo pacman --sync --needed --noconfirm aws-cli
+pac_install aws-cli
 
-sudo pacman --sync --needed --noconfirm borg lftp
+pac_install borg lftp
 
 # For connecting to Cisco AnyConnect VPN.
 if [ "$MACHINE" == "work" ]; then
-    sudo pacman --sync --needed --noconfirm openconnect
+    pac_install openconnect
 fi
 
 # for the ping utility
-#sudo pacman --sync --needed --noconfirm iputils
+#pac_install iputils
 
 # for audio
-sudo pacman --sync --needed --noconfirm pulseaudio pavucontrol
+pac_install pulseaudio pavucontrol
 
 # YouCompleteMe for code completion in VIM.
-(cd $HOME/src/aur &&\
-    auracle clone vim-youcompleteme-git &&\
-    cd vim-youcompleteme-git &&\
-    makepkg --syncdeps --install --needed --noconfirm)
+aur_install vim-youcompleteme-git
