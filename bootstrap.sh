@@ -99,3 +99,6 @@ fi
 
 # for the ping utility
 #sudo pacman --sync --needed --noconfirm iputils
+
+# for audio
+sudo pacman --sync --needed --noconfirm pulseaudio pavucontrol
