@@ -102,3 +102,9 @@ fi
 
 # for audio
 sudo pacman --sync --needed --noconfirm pulseaudio pavucontrol
+
+# YouCompleteMe for code completion in VIM.
+(cd $HOME/src/aur &&\
+    auracle clone vim-youcompleteme-git &&\
+    cd vim-youcompleteme-git &&\
+    makepkg --syncdeps --install --needed --noconfirm)
