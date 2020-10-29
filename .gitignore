@@ -3,6 +3,8 @@
 # cargo
 .cargo/.package-cache
 .cargo/registry
+# configstore
+.config/configstore
 # dconf
 .config/dconf
 # discord
