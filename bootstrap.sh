@@ -105,3 +105,7 @@ pac_install pulseaudio pavucontrol
 
 # Ale for code completion in VIM.
 pac_install vim-ale
+
+if [ "$MACHINE" == "work" ]; then
+    aur_install teams
+fi

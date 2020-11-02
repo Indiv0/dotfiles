@@ -11,3 +11,9 @@
 .config/discord
 # pulse
 .config/pulse
+# teams
+.config/Microsoft/Microsoft Teams
+.config/autostart/teams.desktop
+.config/mimeapps.list
+.config/teams/CS_skylib
+.config/teams/SkypeRT
