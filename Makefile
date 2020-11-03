@@ -35,6 +35,8 @@ endif
 	$(SYMLINK) $(PWD)/.vimrc $(HOME)
 	# scripts
 	$(SYMLINK) $(PWD)/bin $(HOME)
+	# ssh
+	$(SYMLINK) $(PWD)/.ssh/config $(HOME)/.ssh
 
 clean:
 	# xinitrc
@@ -58,3 +60,5 @@ clean:
 	rm -f $(HOME)/.vimrc
 	# scripts
 	rm -f $(HOME)/bin
+	# ssh
+	rm -f $(HOME)/.ssh/config
