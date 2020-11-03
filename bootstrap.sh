@@ -119,3 +119,8 @@ fi
 if [ "$MACHINE" == "work" ]; then
     aur_install teams
 fi
+
+# Install Java & utilities
+if [ "$MACHINE" == "work" ]; then
+    pac_install jdk-openjdk maven
+fi
