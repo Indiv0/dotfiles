@@ -74,6 +74,9 @@ pac_install rsync
 pac_install rustup sccache
 rustup update stable
 
+# Install rust utilities
+cargo install ripgrep
+
 pac_install openssh
 if ! [ -f $HOME/.ssh/id_ed25519 ]; then
     ssh-keygen -t ed25519

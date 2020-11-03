@@ -1,7 +1,10 @@
 # aws-cli
 .aws/credentials
 # cargo
+.cargo/.crates.toml
+.cargo/.crates2.json
 .cargo/.package-cache
+.cargo/bin
 .cargo/registry
 # configstore
 .config/configstore
