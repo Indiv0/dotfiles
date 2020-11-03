@@ -36,7 +36,9 @@ endif
 	# scripts
 	$(SYMLINK) $(PWD)/bin $(HOME)
 	# ssh
-	$(SYMLINK) $(PWD)/.ssh/config $(HOME)/.ssh
+ifneq ($(MACHINE),work)
+	$(SYMLINK) $(PWD)/.ssh/config.personal $(HOME)/.ssh/config
+endif
 
 clean:
 	# xinitrc
