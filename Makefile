@@ -33,6 +33,8 @@ endif
 	$(SYMLINK) $(PWD)/.aws $(HOME)
 	# vim
 	$(SYMLINK) $(PWD)/.vimrc $(HOME)
+	# scripts
+	$(SYMLINK) $(PWD)/bin $(HOME)
 
 clean:
 	# xinitrc
@@ -54,3 +56,5 @@ clean:
 	rm -f $(HOME)/.aws
 	# vim
 	rm -f $(HOME)/.vimrc
+	# scripts
+	rm -f $(HOME)/bin
