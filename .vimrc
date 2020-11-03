@@ -23,3 +23,9 @@ let g:ale_linters = {'rust': ['analyzer']}
 let g:ale_completion_enabled = 1
 " Enable ALE automatic imports from external modules.
 let g:ale_completion_autoimport = 1
+" Disable unresolved import check because for some reason it has false
+" positives on cargo dependencies.
+let g:ale_rust_analyzer_config =
+  \ {
+  \   'diagnostics': { 'disabled': ['unresolved-import'] }
+  \ }
