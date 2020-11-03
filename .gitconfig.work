@@ -3,4 +3,5 @@
 	name = Nikita Pekin
 [alias]
 	pushf = push --force-with-lease
-
+[pull]
+	rebase = true
