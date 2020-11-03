@@ -112,7 +112,9 @@ pac_install vim-ale
 # xhost command for providing access to an application running in chroot to
 # the graphical server.
 # https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
-pac_install xorg-xhost
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install xorg-xhost
+fi
 
 if [ "$MACHINE" == "work" ]; then
     aur_install teams
