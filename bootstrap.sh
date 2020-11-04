@@ -23,7 +23,9 @@ pac_install man
 # Install rxvt-unicode for a terminal console server & client.
 # Install xorg-xset for setting the X font path. This is necessary for rxvt-unicode to see fonts like ttf-iosevka.
 # Install xorg-xrdb for setting font settings, etc. for rxvt-unicode.
-pac_install xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
+fi
 
 # Install base-devel to be able to compile & install packages from the AUR.
 pac_install base-devel
@@ -39,37 +41,55 @@ fi
 
 # Install urxvt-resize-font-git for resizing urxvt font size on-the-fly.
 # See: https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/
-aur_install urxvt-resize-font-git
+if ! [ "$MACHINE" == "work" ]; then
+    aur_install urxvt-resize-font-git
+fi
 
 # Install the ttf-iosevka font.
-aur_install ttf-iosevka
-# Generate the fonts.dir so that `xset fp /usr/share/fonts/local` works.
-(cd /usr/share/fonts &&\
-    sudo mkfontscale &&\
-    sudo mkfontdir)
+if ! [ "$MACHINE" == "work" ]; then
+    aur_install ttf-iosevka
+    # Generate the fonts.dir so that `xset fp /usr/share/fonts/local` works.
+    (cd /usr/share/fonts &&\
+        sudo mkfontscale &&\
+        sudo mkfontdir)
+fi
 
 # Install noto-fonts to provide ttf-font and serve as a fallback for my preferred fonts.
-pac_install noto-fonts
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install noto-fonts
+fi
 
 # Install tmux.
-pac_install tmux
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install tmux
+fi
 
 # Install Firefox.
-pac_install firefox
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install firefox
+fi
 
-pac_install smartmontools
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install smartmontools
+fi
 
-pac_install docker
-sudo gpasswd -a $user docker
-aur_install libnvidia-container-tools libnvidia-container
-aur_install nvidia-container-toolkit
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install docker
+    sudo gpasswd -a $user docker
+    aur_install libnvidia-container-tools libnvidia-container
+    aur_install nvidia-container-toolkit
+fi
 
 pac_install mlocate
 sudo systemctl start updatedb.timer
 
-pac_install discord
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install discord
+fi
 
-pac_install rsync
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install rsync
+fi
 
 pac_install rustup sccache
 rustup update stable
@@ -82,18 +102,28 @@ if ! [ -f $HOME/.ssh/id_ed25519 ]; then
     ssh-keygen -t ed25519
 fi
 
-pac_install dmenu
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install dmenu
+fi
 
 # qt5-base is necessary for pinentry-qt to work
-pac_install pass qt5-base
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install pass qt5-base
+fi
 
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way
-pac_install devtools
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install devtools
+fi
 
-pac_install aws-cli
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install aws-cli
+fi
 
-pac_install borg lftp
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install borg lftp
+fi
 
 # For connecting to Cisco AnyConnect VPN.
 if [ "$MACHINE" == "work" ]; then
@@ -104,7 +134,9 @@ fi
 #pac_install iputils
 
 # for audio
-pac_install pulseaudio pavucontrol
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install pulseaudio pavucontrol
+fi
 
 # Ale for code completion in VIM.
 pac_install vim-ale
@@ -116,9 +148,9 @@ if ! [ "$MACHINE" == "work" ]; then
     pac_install xorg-xhost
 fi
 
-if [ "$MACHINE" == "work" ]; then
-    aur_install teams
-fi
+#if [ "$MACHINE" == "work" ]; then
+#    aur_install teams
+#fi
 
 # Install Java & utilities
 if [ "$MACHINE" == "work" ]; then
@@ -126,6 +158,10 @@ if [ "$MACHINE" == "work" ]; then
 fi
 
 # Install QEMU for running virtual machines
-pac_install qemu-headless edk2-ovmf
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install qemu-headless edk2-ovmf
+fi
 
-pac_install scrot
+if ! [ "$MACHINE" == "work" ]; then
+    pac_install scrot
+fi
