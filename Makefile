@@ -4,25 +4,25 @@ SYMLINK=ln --symbolic --force
 
 all:
 	# xinitrc
-ifneq ($(MACHINE),work)
+ifneq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.xinitrc $(HOME)
 	$(SYMLINK) $(PWD)/.config $(HOME)
 endif
 	# Xresources
-ifneq ($(MACHINE),work)
+ifneq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.Xresources $(HOME)
 endif
 	# cargo
 	$(SYMLINK) $(PWD)/.cargo $(HOME)
 	# git
-ifeq ($(MACHINE),work)
+ifeq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.gitconfig.work $(HOME)/.gitconfig
 else
 	$(SYMLINK) $(PWD)/.gitconfig.personal $(HOME)/.gitconfig
 endif
 	# gnupg
 	mkdir -p $(HOME)/.gnupg
-ifeq ($(MACHINE),work)
+ifeq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.gnupg/gpg.conf.work $(HOME)/.gnupg/gpg.conf
 else
 	$(SYMLINK) $(PWD)/.gnupg/gpg.conf.personal $(HOME)/.gnupg/gpg.conf
@@ -32,13 +32,13 @@ endif
 	find $(HOME)/.gnupg -type f -exec chmod 600 {} \;
 	# bash
 	$(SYMLINK) $(PWD)/.bash_profile $(HOME)
-ifeq ($(MACHINE),work)
+ifeq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.profile.work $(HOME)/.profile
 else
 	$(SYMLINK) $(PWD)/.profile.personal $(HOME)/.profile
 endif
 	# aws-cli
-ifneq ($(MACHINE),work)
+ifneq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.aws $(HOME)
 endif
 	# vim
@@ -46,7 +46,7 @@ endif
 	# scripts
 	$(SYMLINK) $(PWD)/bin $(HOME)
 	# ssh
-ifneq ($(MACHINE),work)
+ifneq ($(HOSTNAME),hephaestus)
 	$(SYMLINK) $(PWD)/.ssh/config.personal $(HOME)/.ssh/config
 endif
 

@@ -66,7 +66,3 @@ systemctl enable systemd-timesyncd
 echo "nameserver 1.1.1.1" >> /etc/resolv.conf
 echo "nameserver 8.8.8.8" >> /etc/resolv.conf
 ```
-
-To install work-specific dotfiles, the `MACHINE=work` environment variable
-should be set before calling `make`.
-

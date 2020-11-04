@@ -23,7 +23,7 @@ pac_install man
 # Install rxvt-unicode for a terminal console server & client.
 # Install xorg-xset for setting the X font path. This is necessary for rxvt-unicode to see fonts like ttf-iosevka.
 # Install xorg-xrdb for setting font settings, etc. for rxvt-unicode.
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
 else
     # Allows X11 Forwarding over SSH
@@ -45,12 +45,12 @@ fi
 
 # Install urxvt-resize-font-git for resizing urxvt font size on-the-fly.
 # See: https://blog.khmersite.net/2017/12/change-the-urxvt-font-size-on-the-fly/
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     aur_install urxvt-resize-font-git
 fi
 
 # Install the ttf-iosevka font.
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     aur_install ttf-iosevka
     # Generate the fonts.dir so that `xset fp /usr/share/fonts/local` works.
     (cd /usr/share/fonts &&\
@@ -62,18 +62,18 @@ fi
 pac_install noto-fonts
 
 # Install tmux.
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install tmux
 fi
 
 # Install Firefox.
 pac_install firefox
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install smartmontools
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install docker
     sudo gpasswd -a $user docker
     aur_install libnvidia-container-tools libnvidia-container
@@ -83,11 +83,11 @@ fi
 pac_install mlocate
 sudo systemctl start updatedb.timer
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install discord
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install rsync
 fi
 
@@ -95,38 +95,40 @@ pac_install rustup sccache
 rustup update stable
 
 # Install rust utilities
-cargo install ripgrep
+if [ ! -f ~/.cargo/bin/rg ]; then
+    cargo install ripgrep
+fi
 
 pac_install openssh
 if ! [ -f $HOME/.ssh/id_ed25519 ]; then
     ssh-keygen -t ed25519
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install dmenu
 fi
 
 # qt5-base is necessary for pinentry-qt to work
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install pass qt5-base
 fi
 
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install devtools
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install aws-cli
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install borg lftp
 fi
 
 # For connecting to Cisco AnyConnect VPN.
-if [ "$MACHINE" == "work" ]; then
+if [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install openconnect
 fi
 
@@ -134,7 +136,7 @@ fi
 #pac_install iputils
 
 # for audio
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install pulseaudio pavucontrol
 fi
 
@@ -144,24 +146,24 @@ pac_install vim-ale
 # xhost command for providing access to an application running in chroot to
 # the graphical server.
 # https://wiki.archlinux.org/index.php/chroot#Run_graphical_applications_from_chroot
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install xorg-xhost
 fi
 
-#if [ "$MACHINE" == "work" ]; then
+#if [ "$HOSTNAME" == "hephaestus" ]; then
 #    aur_install teams
 #fi
 
 # Install Java & utilities
-if [ "$MACHINE" == "work" ]; then
+if [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install jdk-openjdk maven
 fi
 
 # Install QEMU for running virtual machines
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install qemu-headless edk2-ovmf
 fi
 
-if ! [ "$MACHINE" == "work" ]; then
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install scrot
 fi
