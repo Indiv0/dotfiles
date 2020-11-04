@@ -127,3 +127,5 @@ fi
 
 # Install QEMU for running virtual machines
 pac_install qemu-headless edk2-ovmf
+
+pac_install scrot
