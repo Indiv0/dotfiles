@@ -124,3 +124,6 @@ fi
 if [ "$MACHINE" == "work" ]; then
     pac_install jdk-openjdk maven
 fi
+
+# Install QEMU for running virtual machines
+pac_install qemu-headless edk2-ovmf
