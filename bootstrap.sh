@@ -25,6 +25,10 @@ pac_install man
 # Install xorg-xrdb for setting font settings, etc. for rxvt-unicode.
 if ! [ "$MACHINE" == "work" ]; then
     pac_install xorg-server xorg-xinit xorg-xset xorg-xrdb xorg-mkfontscale bspwm sxhkd rxvt-unicode
+else
+    # Allows X11 Forwarding over SSH
+    # https://wiki.archlinux.org/index.php/OpenSSH#X11_forwarding
+    pac_install xorg-xauth xorg-xhost
 fi
 
 # Install base-devel to be able to compile & install packages from the AUR.
@@ -55,9 +59,7 @@ if ! [ "$MACHINE" == "work" ]; then
 fi
 
 # Install noto-fonts to provide ttf-font and serve as a fallback for my preferred fonts.
-if ! [ "$MACHINE" == "work" ]; then
-    pac_install noto-fonts
-fi
+pac_install noto-fonts
 
 # Install tmux.
 if ! [ "$MACHINE" == "work" ]; then
@@ -65,9 +67,7 @@ if ! [ "$MACHINE" == "work" ]; then
 fi
 
 # Install Firefox.
-if ! [ "$MACHINE" == "work" ]; then
-    pac_install firefox
-fi
+pac_install firefox
 
 if ! [ "$MACHINE" == "work" ]; then
     pac_install smartmontools
