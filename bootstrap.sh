@@ -73,9 +73,9 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install smartmontools
 fi
 
+pac_install docker
+sudo gpasswd -a $user docker
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
-    pac_install docker
-    sudo gpasswd -a $user docker
     aur_install libnvidia-container-tools libnvidia-container
     aur_install nvidia-container-toolkit
 fi
