@@ -4,10 +4,14 @@ SYMLINK=ln --symbolic --force
 
 all:
 	# xinitrc
+ifneq ($(MACHINE),work)
 	$(SYMLINK) $(PWD)/.xinitrc $(HOME)
 	$(SYMLINK) $(PWD)/.config $(HOME)
+endif
 	# Xresources
+ifneq ($(MACHINE),work)
 	$(SYMLINK) $(PWD)/.Xresources $(HOME)
+endif
 	# cargo
 	$(SYMLINK) $(PWD)/.cargo $(HOME)
 	# git
@@ -28,9 +32,15 @@ endif
 	find $(HOME)/.gnupg -type f -exec chmod 600 {} \;
 	# bash
 	$(SYMLINK) $(PWD)/.bash_profile $(HOME)
-	$(SYMLINK) $(PWD)/.profile $(HOME)
+ifeq ($(MACHINE),work)
+	$(SYMLINK) $(PWD)/.profile.work $(HOME)/.profile
+else
+	$(SYMLINK) $(PWD)/.profile.personal $(HOME)/.profile
+endif
 	# aws-cli
+ifneq ($(MACHINE),work)
 	$(SYMLINK) $(PWD)/.aws $(HOME)
+endif
 	# vim
 	$(SYMLINK) $(PWD)/.vimrc $(HOME)
 	# scripts
