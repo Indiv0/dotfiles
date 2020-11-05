@@ -1,6 +1,7 @@
 .PHONY: all clean
 
 SYMLINK=ln --symbolic --force
+HOSTNAME=$(shell hostnamectl --static)
 
 all:
 	# xinitrc
