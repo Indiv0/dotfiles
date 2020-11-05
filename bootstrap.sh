@@ -75,7 +75,9 @@ fi
 
 pac_install docker
 sudo gpasswd -a $user docker
-if ! [ "$HOSTNAME" == "hephaestus" ]; then
+if [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install docker-compose
+else
     aur_install libnvidia-container-tools libnvidia-container
     aur_install nvidia-container-toolkit
 fi
@@ -166,4 +168,9 @@ fi
 
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install scrot
+fi
+
+# Install minikube and kubectl for k8s local dev
+if [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install minikube kubectl
 fi
