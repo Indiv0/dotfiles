@@ -182,3 +182,7 @@ fi
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install nmap
 fi
+
+if [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install ansible jq git-lfs minio-client
+fi
