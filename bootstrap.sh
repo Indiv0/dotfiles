@@ -174,3 +174,11 @@ fi
 if [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install minikube kubectl
 fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    aur_install bottom
+fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install nmap
+fi
