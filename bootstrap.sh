@@ -89,9 +89,8 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install discord
 fi
 
-if ! [ "$HOSTNAME" == "hephaestus" ]; then
-    pac_install rsync
-fi
+# rsync necessary for copies on personal device & for deploy.yml on work device
+pac_install rsync
 
 pac_install rustup sccache
 rustup update stable
