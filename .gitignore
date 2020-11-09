@@ -1,5 +1,7 @@
 # aws-cli
 .aws/credentials
+# bottom
+.config/bottom
 # cargo
 .cargo/.crates.toml
 .cargo/.crates2.json
