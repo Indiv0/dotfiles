@@ -203,7 +203,7 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
 fi
 
 # Necessary for lld to work as a manually-set linker for cargo
-pac_install clang
+pac_install clang lld
 
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install vlc
