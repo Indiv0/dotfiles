@@ -109,10 +109,11 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install dmenu
 fi
 
-# qt5-base is necessary for pinentry-qt to work
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
-    pac_install pass qt5-base
+    pac_install pass
 fi
+# qt5-base is necessary for pinentry-qt to work
+pac_install qt5-base
 
 # For creating chroots
 # See: https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_clean_chroot#Classic_way
