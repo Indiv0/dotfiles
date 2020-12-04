@@ -1,3 +1,6 @@
+!! Themes
+#include </home/indiv0/.config/colors/smear>
+
 ! Override the default DPI with a larger value to
 ! force  Firefox to display UI elements at a larger
 ! scale.
