@@ -202,9 +202,8 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install ntfs-3g
 fi
 
-if ! [ "$HOSTNAME" == "hephaestus" ]; then
-    pac_install clang
-fi
+# Necessary for lld to work as a manually-set linker for cargo
+pac_install clang
 
 if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install vlc
