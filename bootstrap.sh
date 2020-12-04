@@ -228,7 +228,3 @@ if ! [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install perl-image-exiftool feh
     aur_install imlib2-heic
 fi
-
-if [ "$HOSTNAME" == "hephaestus" ]; then
-    aur_install intellij-idea-ultimate-edition
-fi
