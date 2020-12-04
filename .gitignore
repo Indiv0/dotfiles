@@ -5,6 +5,7 @@
 # cargo
 .cargo/.crates.toml
 .cargo/.crates2.json
+.cargo/git/
 .cargo/.package-cache
 .cargo/bin
 .cargo/registry
