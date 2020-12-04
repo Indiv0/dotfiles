@@ -185,3 +185,46 @@ fi
 if [ "$HOSTNAME" == "hephaestus" ]; then
     pac_install ansible jq git-lfs minio-client
 fi
+
+# For mounting exfat devices
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install exfatprogs
+fi
+
+# NOTE: this requires the multilib repo to be enabled
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install steam lib32-nvidia-utils
+fi
+
+# for mounting NTFS partitions
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install ntfs-3g
+fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install clang
+fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install vlc
+fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install chromium
+fi
+
+# for wasm-opt post-processing tool to shrink WASM binaries
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install binaryen
+fi
+
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install wmname
+fi
+
+pac_install code
+pac_install htop
+if ! [ "$HOSTNAME" == "hephaestus" ]; then
+    pac_install perl-image-exiftool feh
+    aur_install imlib2-heic
+fi
