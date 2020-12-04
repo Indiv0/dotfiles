@@ -23,3 +23,5 @@
 .config/mimeapps.list
 .config/teams/CS_skylib
 .config/teams/SkypeRT
+# SteamVR
+.config/openvr/
