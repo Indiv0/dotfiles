@@ -2,3 +2,5 @@ export PASSWORD_STORE_DIR=$HOME/var/pass
 export EDITOR=vim
 export XDG_RUNTIME_DIR=/run/user/1000
 export PATH=$HOME/.cargo/bin:$PATH
+
+alias record="ffmpeg -f x11grab -i :0.0 -pix_fmt yuv420p -c:v libx264 -movflags +faststart -video_size 2560x1440 -framerate 60 -t 20 $HOME/output.mp4"
