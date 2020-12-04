@@ -25,3 +25,5 @@
 .config/teams/SkypeRT
 # SteamVR
 .config/openvr/
+# Visual Studio Code
+.config/Code - OSS/
