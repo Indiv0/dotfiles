@@ -27,3 +27,5 @@
 .config/openvr/
 # Visual Studio Code
 .config/Code - OSS/
+# VLC
+.config/vlc/
