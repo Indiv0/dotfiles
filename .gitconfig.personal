@@ -3,5 +3,7 @@
 	name = Nikita Pekin
 [alias]
 	pushf = push --force-with-lease
+    # source: https://web.archive.org/web/20201204172627/https://news.ycombinator.com/item?id=25280178
+    brt = "!git for-each-ref refs/heads --color=always --sort -committerdate --format='%(HEAD)%(color:reset);%(color:yellow)%(refname:short)%(color:reset);%(contents:subject);%(color:green)(%(committerdate:relative))%(color:blue);<%(authorname)>' | column -t -s ';'"
 [pull]
 	rebase = true
